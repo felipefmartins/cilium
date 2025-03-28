@@ -2,17 +2,18 @@
 https://github.com/cilium/cilium
 https://github.com/cilium/cilium/releases
 
-Version: 1.16.5
+Version: 1.17.2
 
 ```sh
 helm repo update
-export VERSION=1.16.5
+export VERSION=1.17.2
+mkdir  v${VERSION}
 ```
 
 # CREATE MANIFESTS WITH INGRESS
 ```sh
 helm template cilium cilium/cilium \
-    --version 1.16.5 \
+    --version ${VERSION} \
     --namespace kube-system \
     --set ipam.mode=kubernetes \
     --set kubeProxyReplacement=true \
@@ -26,13 +27,13 @@ helm template cilium cilium/cilium \
     --set l2announcements.enabled=true \
     --set ingressController.enabled=true \
     --set ingressController.loadbalancerMode=shared \
-    --set k8sServicePort=7445 > ./v$VERSION/cilium.yaml
+    --set k8sServicePort=7445 > ./v${VERSION}/cilium.yaml
 ```
 
 # CREATE MANIFESTS WITHOUT INGRESS
 ```sh
 helm template cilium cilium/cilium \
-    --version 1.16.5 \
+    --version ${VERSION} \
     --namespace kube-system \
     --set ipam.mode=kubernetes \
     --set kubeProxyReplacement=true \
@@ -44,5 +45,5 @@ helm template cilium cilium/cilium \
     --set hubble.relay.enabled=true \
     --set hubble.ui.enabled=true \
     --set l2announcements.enabled=true \
-    --set k8sServicePort=7445 > ./v$VERSION/cilium-noingress.yaml
+    --set k8sServicePort=7445 > ./v${VERSION}/cilium-noingress.yaml
 ```
