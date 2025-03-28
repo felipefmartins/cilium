@@ -1,9 +1,9 @@
-# VERIFICAR A ULTIMER VERSAO ESTÁVEL
+# GET LAST STABLE VERSION
 https://github.com/cilium/cilium
+
 https://github.com/cilium/cilium/releases
 
-Version: 1.17.2
-
+# UPDATE HELM CHART AND CREATE DIRECTORY
 ```sh
 helm repo update
 export VERSION=1.17.2
