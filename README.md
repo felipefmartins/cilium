@@ -6,7 +6,7 @@ https://github.com/cilium/cilium/releases
 # UPDATE HELM CHART AND CREATE DIRECTORY
 ```sh
 helm repo update
-export VERSION=1.17.2
+export VERSION=1.17.4
 mkdir  v${VERSION}
 ```
 
@@ -27,7 +27,9 @@ helm template cilium cilium/cilium \
     --set l2announcements.enabled=true \
     --set ingressController.enabled=true \
     --set ingressController.loadbalancerMode=shared \
-    --set k8sServicePort=7445 > ./v${VERSION}/cilium.yaml
+    --set k8sServicePort=7445 \
+    --set bpf.masquerade=true \
+    --set cni.exclusive=false > ./v${VERSION}/cilium.yaml
 ```
 
 # CREATE MANIFESTS WITHOUT INGRESS
@@ -45,5 +47,7 @@ helm template cilium cilium/cilium \
     --set hubble.relay.enabled=true \
     --set hubble.ui.enabled=true \
     --set l2announcements.enabled=true \
-    --set k8sServicePort=7445 > ./v${VERSION}/cilium-noingress.yaml
+    --set k8sServicePort=7445 \
+    --set bpf.masquerade=true \
+    --set cni.exclusive=false > ./v${VERSION}/cilium-noingress.yaml
 ```
