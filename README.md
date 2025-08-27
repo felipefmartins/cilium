@@ -6,7 +6,7 @@ https://github.com/cilium/cilium/releases
 # UPDATE HELM CHART AND CREATE DIRECTORY
 ```sh
 helm repo update
-export VERSION=1.17.4
+export VERSION=1.18.1
 mkdir  v${VERSION}
 ```
 
@@ -49,6 +49,8 @@ helm template cilium cilium/cilium \
     --set l2announcements.enabled=true \
     --set k8sServicePort=7445 \
     --set gatewayAPI.enabled=true \
+    --set gatewayAPI.hostNetwork.enabled=true \
     --set bpf.masquerade=true \
+    --set envoyConfig.enabled=true \
     --set cni.exclusive=false > ./v${VERSION}/cilium-noingress.yaml
 ```
