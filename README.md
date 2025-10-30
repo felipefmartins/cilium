@@ -6,7 +6,7 @@ https://github.com/cilium/cilium/releases
 # UPDATE HELM CHART AND CREATE DIRECTORY
 ```sh
 helm repo update
-export VERSION=1.18.1
+export VERSION=1.18.3
 mkdir  v${VERSION}
 ```
 
