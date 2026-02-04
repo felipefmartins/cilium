@@ -55,7 +55,7 @@ helm template cilium cilium/cilium \
     --set cni.exclusive=false > ./v${VERSION}/cilium-noingress.yaml
 ```
 
-# CREATE MANIFESTS WITHOUT INGRESS
+# CREATE MANIFESTS ISTIO COMPATIBLE
 ```sh
 helm template cilium cilium/cilium \
     --version ${VERSION} \
